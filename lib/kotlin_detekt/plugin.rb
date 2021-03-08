@@ -54,6 +54,9 @@ module Danger
 
     # Skip gradle task
     attr_accessor :skip_gradle_task
+    
+    attr_accessor :inline_mode
+
 
     # Calls Detekt task of your gradle project.
     # It fails if `gradlew` cannot be found inside current directory.
@@ -61,7 +64,7 @@ module Danger
     # It fails if `xmlReport` configuration is not set to `true` in your `build.gradle` file.
     # @return [void]
     #
-    def detekt(inline_mode: false)
+    def detekt
       unless skip_gradle_task || gradlew_exists?
         fail("Could not find `gradlew` inside current directory")
         return
